@@ -1,33 +1,55 @@
 #include "../include/paddle.h"
 
-void Paddle::init (float x, float y, int l)
+void Paddle::init (float x, float y, int w, int l, int side)
 {
 	this -> x = x;
 	this -> y = y;
+	this -> width = w;
 	this -> length = l;
+	this -> side = side;
 }
 
-void Paddle::moveUp(void)
+void Paddle::moveUp()
 {
 	if (y > 0) {y--;}
 }
 
-void Paddle::moveDown(void)
+void Paddle::moveDown()
 {
 	if ( y + length < 600) {y++;}
 }
 
-float Paddle::getX(void)
+float Paddle::getLeftX()
 {
 	return x;
 }
 
-float Paddle::getY(void)
+float Paddle::getRightX()
+{
+	return x + width;
+}
+
+float Paddle::getUpperY()
 {
 	return y;
 }
 
-int Paddle::getLength(void)
+float Paddle::getLowerY()
+{
+	return y + length;
+}
+
+int Paddle::getWidth ()
+{
+	return width;
+}
+
+int Paddle::getLength()
 {
 	return length;
+}
+
+int Paddle::getSide()
+{
+	return side;
 }

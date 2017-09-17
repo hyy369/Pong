@@ -1,52 +1,67 @@
 #include "../include/ball.h"
+#include "../include/paddle.h"
 
 void Ball::init (float x, float y, int r)
 {
   this -> centerX = x;
   this -> centerY = y;
   this -> radius = r;
-  this -> leftX = x - r;
-  this -> rightX = x + r;
-  this -> upperY = y - r;
-  this -> lowerY = y + r;
   this -> speedX = 0.2;
   this -> speedY = 0.2;
 }
 
 void Ball::move()
 {
-  if ( (upperY < 0.0) || (lowerY > 600.0))
+  if ( (getUpperY() <= 0.0 && speedY < 0.0) || (getLowerY() >= 600.0 && speedY > 0.0))
   {
-    reflect();
+    collideWall();
   }
-  centerX += speedX;
-  centerY += speedY;
-  updateEdges();
-  // x += speedX;
-  // y += speedY;
+
+  if (getLeftX() >= 0.0 && getRightX() <= 800.0)
+  {
+    centerX += speedX;
+    centerY += speedY;
+  }
 }
 
-void Ball::reflect()
+void Ball::collideWall()
 {
   speedY = -speedY;
 }
 
-void Ball::updateEdges()
+void Ball::checkCollidePaddle(Paddle paddle)
 {
-  leftX = centerX - radius;
-  rightX = centerX + radius;
-  upperY = centerY - radius;
-  lowerY = centerY + radius;
+  if ( (paddle.getSide() == 0) &&
+       (getLeftX() <= paddle.getRightX()) &&
+       (getLowerY() >= paddle.getUpperY()) &&
+       (getUpperY() <= paddle.getLowerY())) {
+    speedX = -speedX;
+  } else if ( (paddle.getSide() == 1) &&
+       (getRightX() >= paddle.getLeftX()) &&
+       (getLowerY() >= paddle.getUpperY()) &&
+       (getUpperY() <= paddle.getLowerY())) {
+    speedX = -speedX;
+  }
 }
 
 float Ball::getLeftX()
 {
-  return leftX;
+  return centerX - radius;
+}
+
+float Ball::getRightX()
+{
+  return centerX + radius;
 }
 
 float Ball::getUpperY()
 {
-  return upperY;
+  return centerY - radius;
+}
+
+float Ball::getLowerY()
+{
+  return centerY + radius;
 }
 
 float Ball::getSpeedX()
