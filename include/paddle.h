@@ -4,17 +4,17 @@
 class Paddle
 {
 private:
-  int x;
-  int y;
+  float x;
+  float y;
   int length;
 
 public:
   Paddle (){}
-  void init (int, int, int);
+  void init (float, float, int);
   void moveUp();
   void moveDown();
-  int getX();
-  int getY();
+  float getX();
+  float getY();
   int getLength();
 };
 

@@ -1,7 +1,6 @@
 #include "../include/paddle.h"
-#include <stdlib.h>
 
-void Paddle::init (int x, int y, int l)
+void Paddle::init (float x, float y, int l)
 {
 	this -> x = x;
 	this -> y = y;
@@ -18,14 +17,14 @@ void Paddle::moveDown(void)
 	if ( y + length < 600) {y++;}
 }
 
-int Paddle::getX(void)
+float Paddle::getX(void)
 {
-	return this -> x;
+	return x;
 }
 
-int Paddle::getY(void)
+float Paddle::getY(void)
 {
-	return this -> y;
+	return y;
 }
 
 int Paddle::getLength(void)

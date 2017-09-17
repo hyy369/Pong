@@ -3,4 +3,5 @@
 
 CMakeFiles/pong.dir/bin/pong.cpp.o
  /Users/HYY/Documents/Workspace/Pong/bin/pong.cpp
+ /Users/HYY/Documents/Workspace/Pong/include/ball.h
  /Users/HYY/Documents/Workspace/Pong/include/paddle.h
