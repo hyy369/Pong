@@ -19,10 +19,18 @@ SFML/Graphics/Shape.hpp
 /Users/HYY/Documents/Workspace/Pong/include/paddle.h
 ../include/ball.h
 /Users/HYY/Documents/Workspace/Pong/include/ball.h
+../include/paddleController.h
+/Users/HYY/Documents/Workspace/Pong/include/paddleController.h
 
 /Users/HYY/Documents/Workspace/Pong/include/ball.h
 ../include/paddle.h
 /Users/HYY/Documents/Workspace/Pong/include/paddle.h
 
 /Users/HYY/Documents/Workspace/Pong/include/paddle.h
+
+/Users/HYY/Documents/Workspace/Pong/include/paddleController.h
+../include/paddle.h
+/Users/HYY/Documents/Workspace/Pong/include/paddle.h
+../include/ball.h
+/Users/HYY/Documents/Workspace/Pong/include/ball.h
 

@@ -244,6 +244,33 @@ src/paddle.cpp.s:
 	$(MAKE) -f CMakeFiles/Pong_core.dir/build.make CMakeFiles/Pong_core.dir/src/paddle.cpp.s
 .PHONY : src/paddle.cpp.s
 
+src/paddleController.o: src/paddleController.cpp.o
+
+.PHONY : src/paddleController.o
+
+# target to build an object file
+src/paddleController.cpp.o:
+	$(MAKE) -f CMakeFiles/Pong_core.dir/build.make CMakeFiles/Pong_core.dir/src/paddleController.cpp.o
+.PHONY : src/paddleController.cpp.o
+
+src/paddleController.i: src/paddleController.cpp.i
+
+.PHONY : src/paddleController.i
+
+# target to preprocess a source file
+src/paddleController.cpp.i:
+	$(MAKE) -f CMakeFiles/Pong_core.dir/build.make CMakeFiles/Pong_core.dir/src/paddleController.cpp.i
+.PHONY : src/paddleController.cpp.i
+
+src/paddleController.s: src/paddleController.cpp.s
+
+.PHONY : src/paddleController.s
+
+# target to generate assembly for a file
+src/paddleController.cpp.s:
+	$(MAKE) -f CMakeFiles/Pong_core.dir/build.make CMakeFiles/Pong_core.dir/src/paddleController.cpp.s
+.PHONY : src/paddleController.cpp.s
+
 src/vector.o: src/vector.cpp.o
 
 .PHONY : src/vector.o
@@ -293,6 +320,9 @@ help:
 	@echo "... src/paddle.o"
 	@echo "... src/paddle.i"
 	@echo "... src/paddle.s"
+	@echo "... src/paddleController.o"
+	@echo "... src/paddleController.i"
+	@echo "... src/paddleController.s"
 	@echo "... src/vector.o"
 	@echo "... src/vector.i"
 	@echo "... src/vector.s"

@@ -1,2 +1,2 @@
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar qc libPong_core.a  CMakeFiles/Pong_core.dir/src/ball.cpp.o CMakeFiles/Pong_core.dir/src/helloworld.cpp.o CMakeFiles/Pong_core.dir/src/paddle.cpp.o CMakeFiles/Pong_core.dir/src/vector.cpp.o
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar qc libPong_core.a  CMakeFiles/Pong_core.dir/src/ball.cpp.o CMakeFiles/Pong_core.dir/src/helloworld.cpp.o CMakeFiles/Pong_core.dir/src/paddle.cpp.o CMakeFiles/Pong_core.dir/src/paddleController.cpp.o CMakeFiles/Pong_core.dir/src/vector.cpp.o
 /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib libPong_core.a

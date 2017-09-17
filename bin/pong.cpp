@@ -4,19 +4,9 @@
 #include <SFML/Graphics/Shape.hpp>
 #include "../include/paddle.h"
 #include "../include/ball.h"
+#include "../include/paddleController.h"
 
 sf::Font font;
-
-// sf::Text updateScoreText()
-// {
-//   sf::Text scoreText;
-//   scoreText.setFont(font);
-//   scoreText.setString("");
-//   scoreText.setCharacterSize(32);
-//   scoreText.setColor(sf::Color::White);
-//   scoreText.setPosition(0,0);
-// }
-
 
 int main(int argc, char** argv)
 {
@@ -62,6 +52,8 @@ int main(int argc, char** argv)
   scoreText.setFillColor(sf::Color::White);
   scoreText.setPosition(100,32);
 
+  PaddleController AIController(AIPaddle);
+
   // start main loop
   while(App.isOpen())
   {
@@ -86,6 +78,7 @@ int main(int argc, char** argv)
     ball.move();
     ball.checkCollidePaddle(AIPaddle);
     ball.checkCollidePaddle(playerPaddle);
+    AIController.makeDecision(ball);
 
     // clear screen and fill with black
     App.clear(sf::Color::Black);
@@ -97,11 +90,11 @@ int main(int argc, char** argv)
     App.draw(AIPaddleShape);
     App.draw(playerPaddleShape);
 
-    // sf::Text scoreText = updateScoreText();
+    //Display ball movement information for debugging
     debugText.setString("ballX: " +
                         std::to_string(ball.getLeftX()) + " ballY: " +
                         std::to_string(ball.getUpperY()) + " speedX: " +
-                        std::to_string(ball.getSpeedX()) + " speeY: " +
+                        std::to_string(ball.getSpeedX()) + " speedY: " +
                         std::to_string(ball.getSpeedY()));
     App.draw(debugText);
 

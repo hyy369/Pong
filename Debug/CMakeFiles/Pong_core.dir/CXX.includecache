@@ -14,6 +14,12 @@
 
 /Users/HYY/Documents/Workspace/Pong/include/paddle.h
 
+/Users/HYY/Documents/Workspace/Pong/include/paddleController.h
+../include/paddle.h
+/Users/HYY/Documents/Workspace/Pong/include/paddle.h
+../include/ball.h
+/Users/HYY/Documents/Workspace/Pong/include/ball.h
+
 /Users/HYY/Documents/Workspace/Pong/src/ball.cpp
 ../include/ball.h
 /Users/HYY/Documents/Workspace/Pong/include/ball.h
@@ -27,6 +33,16 @@ SFML/Graphics.hpp
 /Users/HYY/Documents/Workspace/Pong/src/paddle.cpp
 ../include/paddle.h
 /Users/HYY/Documents/Workspace/Pong/include/paddle.h
+
+/Users/HYY/Documents/Workspace/Pong/src/paddleController.cpp
+../include/paddle.h
+/Users/HYY/Documents/Workspace/Pong/include/paddle.h
+../include/ball.h
+/Users/HYY/Documents/Workspace/Pong/include/ball.h
+../include/paddleController.h
+/Users/HYY/Documents/Workspace/Pong/include/paddleController.h
+iostream
+-
 
 /Users/HYY/Documents/Workspace/Pong/src/vector.cpp
 ../include/vector.h
