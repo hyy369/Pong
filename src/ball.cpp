@@ -6,8 +6,8 @@ void Ball::init (float x, float y, int r)
   this -> centerX = x;
   this -> centerY = y;
   this -> radius = r;
-  this -> speedX = 0.2;
-  this -> speedY = 0.2;
+  this -> speedX = 1;
+  this -> speedY = 1;
 }
 
 void Ball::move()

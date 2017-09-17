@@ -60,13 +60,50 @@ CMAKE_SOURCE_DIR = /Users/HYY/Documents/Workspace/Pong
 CMAKE_BINARY_DIR = /Users/HYY/Documents/Workspace/Pong/Debug
 
 #=============================================================================
+# Target rules for target CMakeFiles/helloworld.dir
+
+# All Build rule for target.
+CMakeFiles/helloworld.dir/all: CMakeFiles/Pong_core.dir/all
+	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/depend
+	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/HYY/Documents/Workspace/Pong/Debug/CMakeFiles --progress-num=6,7 "Built target helloworld"
+.PHONY : CMakeFiles/helloworld.dir/all
+
+# Include target in all.
+all: CMakeFiles/helloworld.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/helloworld.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/HYY/Documents/Workspace/Pong/Debug/CMakeFiles 7
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/helloworld.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/HYY/Documents/Workspace/Pong/Debug/CMakeFiles 0
+.PHONY : CMakeFiles/helloworld.dir/rule
+
+# Convenience name for target.
+helloworld: CMakeFiles/helloworld.dir/rule
+
+.PHONY : helloworld
+
+# clean rule for target.
+CMakeFiles/helloworld.dir/clean:
+	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/clean
+.PHONY : CMakeFiles/helloworld.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/helloworld.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/pong.dir
 
 # All Build rule for target.
 CMakeFiles/pong.dir/all: CMakeFiles/Pong_core.dir/all
 	$(MAKE) -f CMakeFiles/pong.dir/build.make CMakeFiles/pong.dir/depend
 	$(MAKE) -f CMakeFiles/pong.dir/build.make CMakeFiles/pong.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/HYY/Documents/Workspace/Pong/Debug/CMakeFiles --progress-num=7,8 "Built target pong"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/HYY/Documents/Workspace/Pong/Debug/CMakeFiles --progress-num=8,9 "Built target pong"
 .PHONY : CMakeFiles/pong.dir/all
 
 # Include target in all.
@@ -76,7 +113,7 @@ all: CMakeFiles/pong.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/pong.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/HYY/Documents/Workspace/Pong/Debug/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/HYY/Documents/Workspace/Pong/Debug/CMakeFiles 7
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/pong.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/HYY/Documents/Workspace/Pong/Debug/CMakeFiles 0
 .PHONY : CMakeFiles/pong.dir/rule
@@ -103,7 +140,7 @@ clean: CMakeFiles/pong.dir/clean
 CMakeFiles/Pong_core.dir/all:
 	$(MAKE) -f CMakeFiles/Pong_core.dir/build.make CMakeFiles/Pong_core.dir/depend
 	$(MAKE) -f CMakeFiles/Pong_core.dir/build.make CMakeFiles/Pong_core.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/HYY/Documents/Workspace/Pong/Debug/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target Pong_core"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/HYY/Documents/Workspace/Pong/Debug/CMakeFiles --progress-num=1,2,3,4,5 "Built target Pong_core"
 .PHONY : CMakeFiles/Pong_core.dir/all
 
 # Include target in all.
@@ -113,7 +150,7 @@ all: CMakeFiles/Pong_core.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Pong_core.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/HYY/Documents/Workspace/Pong/Debug/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/HYY/Documents/Workspace/Pong/Debug/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Pong_core.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/HYY/Documents/Workspace/Pong/Debug/CMakeFiles 0
 .PHONY : CMakeFiles/Pong_core.dir/rule

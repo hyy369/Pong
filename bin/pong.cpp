@@ -5,6 +5,7 @@
 #include "../include/paddle.h"
 #include "../include/ball.h"
 #include "../include/paddleController.h"
+#include "../include/pong.h"
 
 sf::Font font;
 
@@ -52,62 +53,117 @@ int main(int argc, char** argv)
   scoreText.setFillColor(sf::Color::White);
   scoreText.setPosition(100,32);
 
+  sf::Text messageText;
+  messageText.setFont(font);
+  messageText.setCharacterSize(24);
+  messageText.setFillColor(sf::Color::White);
+  messageText.setPosition(200,250);
+
   PaddleController AIController(AIPaddle);
 
-  // start main loop
-  while(App.isOpen())
+  bool restartGame = true;
+  bool restartRound = true;
+
+  //start main game loop
+  while (App.isOpen())
   {
-    // process events
-    sf::Event Event;
-    while(App.pollEvent(Event))
+
+    // start dound loop
+    while(playerScore < 11 && AIScore < 11)
     {
-      // Exit
-      if(Event.type == sf::Event::Closed)
-        App.close();
+      // process events
+      sf::Event Event;
+      while(App.pollEvent(Event))
+      {
+        // Exit
+        if(Event.type == sf::Event::Closed)
+          App.close();
+      }
+
+      if (sf::Keyboard::isKeyPressed(sf::Keyboard::K))
+      {
+        playerPaddle.moveUp();
+      }
+      else if (sf::Keyboard::isKeyPressed(sf::Keyboard::M))
+      {
+        playerPaddle.moveDown();
+      }
+
+      ball.move();
+      ball.checkCollidePaddle(AIPaddle);
+      ball.checkCollidePaddle(playerPaddle);
+      AIController.makeDecision(ball);
+
+      if (ball.getLeftX() <= 0.0) {
+        playerScore++;
+        // std::cout << "Player scores.\n";
+        AIPaddle.init(50,250,paddleWidth,paddleLength,0);
+        playerPaddle.init(750,250,paddleWidth,paddleLength,1);
+        ball.init(400,300,ballRadius);
+      } else if (ball.getRightX() >= 800.0) {
+        AIScore++;
+        // std::cout << "AI scores.\n";
+        AIPaddle.init(50,250,paddleWidth,paddleLength,0);
+        playerPaddle.init(750,250,paddleWidth,paddleLength,1);
+        ball.init(400,300,ballRadius);
+      }
+
+      // clear screen and fill with black
+      App.clear(sf::Color::Black);
+
+      AIPaddleShape.setPosition(AIPaddle.getLeftX(),AIPaddle.getUpperY());
+      playerPaddleShape.setPosition(playerPaddle.getLeftX(),playerPaddle.getUpperY());
+      ballShape.setPosition(ball.getLeftX(),ball.getUpperY());
+      App.draw(ballShape);
+      App.draw(AIPaddleShape);
+      App.draw(playerPaddleShape);
+
+      //Display ball movement information for debugging
+      debugText.setString("ballX: " +
+                          std::to_string(ball.getLeftX()) + " ballY: " +
+                          std::to_string(ball.getUpperY()) + " speedX: " +
+                          std::to_string(ball.getSpeedX()) + " speedY: " +
+                          std::to_string(ball.getSpeedY()));
+      App.draw(debugText);
+
+      scoreText.setString("Computer  " +
+                          std::to_string(AIScore) + " : " +
+                          std::to_string(playerScore) + "  Player");
+      App.draw(scoreText);
+
+      // display
+      App.display();
     }
 
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::K))
-    {
-      playerPaddle.moveUp();
-    }
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::M))
-    {
-      playerPaddle.moveDown();
-    }
-
-    ball.move();
-    ball.checkCollidePaddle(AIPaddle);
-    ball.checkCollidePaddle(playerPaddle);
-    AIController.makeDecision(ball);
-
-    // clear screen and fill with black
+    //display winner message
     App.clear(sf::Color::Black);
-
-    AIPaddleShape.setPosition(AIPaddle.getLeftX(),AIPaddle.getUpperY());
-    playerPaddleShape.setPosition(playerPaddle.getLeftX(),playerPaddle.getUpperY());
-    ballShape.setPosition(ball.getLeftX(),ball.getUpperY());
-    App.draw(ballShape);
-    App.draw(AIPaddleShape);
-    App.draw(playerPaddleShape);
-
-    //Display ball movement information for debugging
-    debugText.setString("ballX: " +
-                        std::to_string(ball.getLeftX()) + " ballY: " +
-                        std::to_string(ball.getUpperY()) + " speedX: " +
-                        std::to_string(ball.getSpeedX()) + " speedY: " +
-                        std::to_string(ball.getSpeedY()));
-    App.draw(debugText);
-
-    scoreText.setString("Computer  " +
-                        std::to_string(AIScore) + " : " +
-                        std::to_string(playerScore) + "  Player");
-    App.draw(scoreText);
-
-    // display
+    if (AIScore == 11)
+    {
+      messageText.setString("Computer wins! Restart Game?\n  Press Y/N");
+    } else {
+      messageText.setString("You win! Restart Game?\n  Press Y/N");
+    }
+    App.draw(messageText);
     App.display();
-  }
 
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Y))
+    {
+      playerScore = 0;
+      AIScore = 0;
+    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::N))
+    {
+      App.close();
+    }
+
+  }
 
   // Done.
   return 0;
+}
+
+void initGame (Paddle &AIPaddle, Paddle &playerPaddle, Ball &ball)
+{
+  // AIPaddle -> init(50,250,paddleWidth,paddleLength,0);
+  // playerPaddle -> init(750,250,paddleWidth,paddleLength,1);
+  // ball -> init(400,300,ballRadius);
 }

@@ -90,6 +90,7 @@ helloworld_EXTERNAL_OBJECTS =
 
 helloworld: CMakeFiles/helloworld.dir/bin/helloworld.cpp.o
 helloworld: CMakeFiles/helloworld.dir/build.make
+helloworld: libPong_core.a
 helloworld: CMakeFiles/helloworld.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/HYY/Documents/Workspace/Pong/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable helloworld"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/helloworld.dir/link.txt --verbose=$(VERBOSE)

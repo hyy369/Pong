@@ -3,6 +3,6 @@
 
 int main(int argc, char** argv);
 
-sf::Text updateScoreText();
+void initGame(Paddle &, Paddle &, Ball &);
 
 #endif

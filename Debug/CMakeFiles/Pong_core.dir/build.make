@@ -81,33 +81,9 @@ CMakeFiles/Pong_core.dir/src/ball.cpp.o.provides: CMakeFiles/Pong_core.dir/src/b
 CMakeFiles/Pong_core.dir/src/ball.cpp.o.provides.build: CMakeFiles/Pong_core.dir/src/ball.cpp.o
 
 
-CMakeFiles/Pong_core.dir/src/helloworld.cpp.o: CMakeFiles/Pong_core.dir/flags.make
-CMakeFiles/Pong_core.dir/src/helloworld.cpp.o: ../src/helloworld.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/HYY/Documents/Workspace/Pong/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Pong_core.dir/src/helloworld.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pong_core.dir/src/helloworld.cpp.o -c /Users/HYY/Documents/Workspace/Pong/src/helloworld.cpp
-
-CMakeFiles/Pong_core.dir/src/helloworld.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Pong_core.dir/src/helloworld.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/HYY/Documents/Workspace/Pong/src/helloworld.cpp > CMakeFiles/Pong_core.dir/src/helloworld.cpp.i
-
-CMakeFiles/Pong_core.dir/src/helloworld.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Pong_core.dir/src/helloworld.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/HYY/Documents/Workspace/Pong/src/helloworld.cpp -o CMakeFiles/Pong_core.dir/src/helloworld.cpp.s
-
-CMakeFiles/Pong_core.dir/src/helloworld.cpp.o.requires:
-
-.PHONY : CMakeFiles/Pong_core.dir/src/helloworld.cpp.o.requires
-
-CMakeFiles/Pong_core.dir/src/helloworld.cpp.o.provides: CMakeFiles/Pong_core.dir/src/helloworld.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Pong_core.dir/build.make CMakeFiles/Pong_core.dir/src/helloworld.cpp.o.provides.build
-.PHONY : CMakeFiles/Pong_core.dir/src/helloworld.cpp.o.provides
-
-CMakeFiles/Pong_core.dir/src/helloworld.cpp.o.provides.build: CMakeFiles/Pong_core.dir/src/helloworld.cpp.o
-
-
 CMakeFiles/Pong_core.dir/src/paddle.cpp.o: CMakeFiles/Pong_core.dir/flags.make
 CMakeFiles/Pong_core.dir/src/paddle.cpp.o: ../src/paddle.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/HYY/Documents/Workspace/Pong/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Pong_core.dir/src/paddle.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/HYY/Documents/Workspace/Pong/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Pong_core.dir/src/paddle.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pong_core.dir/src/paddle.cpp.o -c /Users/HYY/Documents/Workspace/Pong/src/paddle.cpp
 
 CMakeFiles/Pong_core.dir/src/paddle.cpp.i: cmake_force
@@ -131,7 +107,7 @@ CMakeFiles/Pong_core.dir/src/paddle.cpp.o.provides.build: CMakeFiles/Pong_core.d
 
 CMakeFiles/Pong_core.dir/src/paddleController.cpp.o: CMakeFiles/Pong_core.dir/flags.make
 CMakeFiles/Pong_core.dir/src/paddleController.cpp.o: ../src/paddleController.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/HYY/Documents/Workspace/Pong/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Pong_core.dir/src/paddleController.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/HYY/Documents/Workspace/Pong/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Pong_core.dir/src/paddleController.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pong_core.dir/src/paddleController.cpp.o -c /Users/HYY/Documents/Workspace/Pong/src/paddleController.cpp
 
 CMakeFiles/Pong_core.dir/src/paddleController.cpp.i: cmake_force
@@ -155,7 +131,7 @@ CMakeFiles/Pong_core.dir/src/paddleController.cpp.o.provides.build: CMakeFiles/P
 
 CMakeFiles/Pong_core.dir/src/vector.cpp.o: CMakeFiles/Pong_core.dir/flags.make
 CMakeFiles/Pong_core.dir/src/vector.cpp.o: ../src/vector.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/HYY/Documents/Workspace/Pong/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Pong_core.dir/src/vector.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/HYY/Documents/Workspace/Pong/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Pong_core.dir/src/vector.cpp.o"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Pong_core.dir/src/vector.cpp.o -c /Users/HYY/Documents/Workspace/Pong/src/vector.cpp
 
 CMakeFiles/Pong_core.dir/src/vector.cpp.i: cmake_force
@@ -180,7 +156,6 @@ CMakeFiles/Pong_core.dir/src/vector.cpp.o.provides.build: CMakeFiles/Pong_core.d
 # Object files for target Pong_core
 Pong_core_OBJECTS = \
 "CMakeFiles/Pong_core.dir/src/ball.cpp.o" \
-"CMakeFiles/Pong_core.dir/src/helloworld.cpp.o" \
 "CMakeFiles/Pong_core.dir/src/paddle.cpp.o" \
 "CMakeFiles/Pong_core.dir/src/paddleController.cpp.o" \
 "CMakeFiles/Pong_core.dir/src/vector.cpp.o"
@@ -189,13 +164,12 @@ Pong_core_OBJECTS = \
 Pong_core_EXTERNAL_OBJECTS =
 
 libPong_core.a: CMakeFiles/Pong_core.dir/src/ball.cpp.o
-libPong_core.a: CMakeFiles/Pong_core.dir/src/helloworld.cpp.o
 libPong_core.a: CMakeFiles/Pong_core.dir/src/paddle.cpp.o
 libPong_core.a: CMakeFiles/Pong_core.dir/src/paddleController.cpp.o
 libPong_core.a: CMakeFiles/Pong_core.dir/src/vector.cpp.o
 libPong_core.a: CMakeFiles/Pong_core.dir/build.make
 libPong_core.a: CMakeFiles/Pong_core.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/HYY/Documents/Workspace/Pong/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX static library libPong_core.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/HYY/Documents/Workspace/Pong/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX static library libPong_core.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/Pong_core.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Pong_core.dir/link.txt --verbose=$(VERBOSE)
 
@@ -205,7 +179,6 @@ CMakeFiles/Pong_core.dir/build: libPong_core.a
 .PHONY : CMakeFiles/Pong_core.dir/build
 
 CMakeFiles/Pong_core.dir/requires: CMakeFiles/Pong_core.dir/src/ball.cpp.o.requires
-CMakeFiles/Pong_core.dir/requires: CMakeFiles/Pong_core.dir/src/helloworld.cpp.o.requires
 CMakeFiles/Pong_core.dir/requires: CMakeFiles/Pong_core.dir/src/paddle.cpp.o.requires
 CMakeFiles/Pong_core.dir/requires: CMakeFiles/Pong_core.dir/src/paddleController.cpp.o.requires
 CMakeFiles/Pong_core.dir/requires: CMakeFiles/Pong_core.dir/src/vector.cpp.o.requires

@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 int main(int argc, char** argv)
 {
@@ -22,6 +23,7 @@ int main(int argc, char** argv)
 
     // display
     App.display();
+    std::cout << "Redraw.";
   }
 
   // Done.

@@ -5,4 +5,5 @@ CMakeFiles/pong.dir/bin/pong.cpp.o: ../bin/pong.cpp
 CMakeFiles/pong.dir/bin/pong.cpp.o: ../include/ball.h
 CMakeFiles/pong.dir/bin/pong.cpp.o: ../include/paddle.h
 CMakeFiles/pong.dir/bin/pong.cpp.o: ../include/paddleController.h
+CMakeFiles/pong.dir/bin/pong.cpp.o: ../include/pong.h
 
