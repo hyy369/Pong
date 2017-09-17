@@ -33,6 +33,8 @@ int main(int argc, char** argv)
   playerPaddle.init(750,250,paddleWidth,paddleLength,1);
   ball.init(400,300,ballRadius);
 
+  PaddleController AIController(AIPaddle);
+
   sf::RectangleShape AIPaddleShape(sf::Vector2f(paddleWidth,paddleLength));
   sf::RectangleShape playerPaddleShape(sf::Vector2f(paddleWidth,paddleLength));
   sf::CircleShape ballShape(ballRadius);
@@ -59,14 +61,20 @@ int main(int argc, char** argv)
   messageText.setFillColor(sf::Color::White);
   messageText.setPosition(200,250);
 
-  PaddleController AIController(AIPaddle);
-
   bool restartGame = true;
   bool restartRound = true;
 
   //start main game loop
   while (App.isOpen())
   {
+    // process events
+    sf::Event Event;
+    while(App.pollEvent(Event))
+    {
+      // Exit
+      if(Event.type == sf::Event::Closed)
+        App.close();
+    }
 
     // start dound loop
     while(playerScore < 11 && AIScore < 11)
