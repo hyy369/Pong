@@ -9,7 +9,8 @@ private:
   int length;
 
 public:
-  Paddle (int, int, int);
+  Paddle (){}
+  void init (int, int, int);
   void moveUp();
   void moveDown();
   int getX();

@@ -27,6 +27,23 @@ int main(int argc, char** argv)
   // create main window
   sf::RenderWindow App(sf::VideoMode(800,600,32), "The Pong Game");
 
+  int playerScore = 0;
+  int AIScore = 0;
+  int paddleLength = 100;
+  int ballRadius = 10;
+
+  Paddle AIPaddle;
+  Paddle playerPaddle;
+  AIPaddle.init(50,250,paddleLength);
+  playerPaddle.init(750,250,paddleLength);
+
+  sf::RectangleShape AIPaddleShape(sf::Vector2f(5,paddleLength));
+  sf::RectangleShape playerPaddleShape(sf::Vector2f(5,paddleLength));
+  sf::CircleShape ballShape(ballRadius);
+  ballShape.setFillColor(sf::Color::White);
+  AIPaddleShape.setFillColor(sf::Color(sf::Color::White));
+  playerPaddleShape.setFillColor(sf::Color(sf::Color::White));
+
   // start main loop
   while(App.isOpen())
   {
@@ -38,38 +55,33 @@ int main(int argc, char** argv)
       if(Event.type == sf::Event::Closed)
         App.close();
     }
-
-    int playerScore = 0;
-    int AIScore = 0;
-    int paddleLength = 100;
-    // while (playerScore < 10 && AIScore < 10)
-    // {
-      Paddle AIPaddle(50,250,paddleLength);
-      Paddle playerPaddle(750,250,paddleLength);
-      // clear screen and fill with black
-      App.clear(sf::Color::Black);
-      sf::RectangleShape AIPaddleShape(sf::Vector2f(5,paddleLength));
-      sf::RectangleShape playerPaddleShape(sf::Vector2f(5,paddleLength));
-      sf::CircleShape ballShape(15);
-      ballShape.setFillColor(sf::Color::White);
-      AIPaddleShape.setFillColor(sf::Color(255,255,255));
-      playerPaddleShape.setFillColor(sf::Color(255,255,255));
-      // AIPaddleShape.setPosition(AIPaddlet.getX(),AIPaddle.getY());
-      // playerPaddleShape.setPosition(playerPaddle.getX(),playerPaddle.getY());
-      ballShape.setPosition(385,285);
-      AIPaddleShape.setPosition(50,250);
-      playerPaddleShape.setPosition(750,250);
-      App.draw(ballShape);
-      App.draw(AIPaddleShape);
-      App.draw(playerPaddleShape);
-
-      // sf::Text scoreText = updateScoreText();
-      // App.draw(scoreText);
-
-      // display
-      App.display();
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::K))
+    {
+      playerPaddle.moveUp();
     }
-  // }
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::M))
+    {
+      playerPaddle.moveDown();
+    }
+
+    // clear screen and fill with black
+    App.clear(sf::Color::Black);
+
+
+    AIPaddleShape.setPosition(AIPaddle.getX(),AIPaddle.getY());
+    playerPaddleShape.setPosition(playerPaddle.getX(),playerPaddle.getY());
+    ballShape.setPosition(390,290);
+    App.draw(ballShape);
+    App.draw(AIPaddleShape);
+    App.draw(playerPaddleShape);
+
+    // sf::Text scoreText = updateScoreText();
+    // App.draw(scoreText);
+
+    // display
+    App.display();
+  }
+
 
   // Done.
   return 0;
