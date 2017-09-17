@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/vector.h
+
+/Users/HYY/Documents/Workspace/Pong/include/paddle.h
+
+/Users/HYY/Documents/Workspace/Pong/src/helloworld.cpp
+SFML/Graphics.hpp
+-
+
+/Users/HYY/Documents/Workspace/Pong/src/paddle.cpp
+../include/paddle.h
+/Users/HYY/Documents/Workspace/Pong/include/paddle.h
+stdlib.h
+-
+
+/Users/HYY/Documents/Workspace/Pong/src/vector.cpp
+../include/vector.h
+-
+cmath
+-
+

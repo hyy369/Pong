@@ -111,44 +111,138 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named helloworld
+# Target rules for targets named pong
 
 # Build rule for target.
-helloworld: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 helloworld
-.PHONY : helloworld
+pong: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 pong
+.PHONY : pong
 
 # fast build rule for target.
-helloworld/fast:
-	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/build
-.PHONY : helloworld/fast
+pong/fast:
+	$(MAKE) -f CMakeFiles/pong.dir/build.make CMakeFiles/pong.dir/build
+.PHONY : pong/fast
 
-bin/helloworld.o: bin/helloworld.cpp.o
+#=============================================================================
+# Target rules for targets named Pong_core
 
-.PHONY : bin/helloworld.o
+# Build rule for target.
+Pong_core: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Pong_core
+.PHONY : Pong_core
+
+# fast build rule for target.
+Pong_core/fast:
+	$(MAKE) -f CMakeFiles/Pong_core.dir/build.make CMakeFiles/Pong_core.dir/build
+.PHONY : Pong_core/fast
+
+bin/pong.o: bin/pong.cpp.o
+
+.PHONY : bin/pong.o
 
 # target to build an object file
-bin/helloworld.cpp.o:
-	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/bin/helloworld.cpp.o
-.PHONY : bin/helloworld.cpp.o
+bin/pong.cpp.o:
+	$(MAKE) -f CMakeFiles/pong.dir/build.make CMakeFiles/pong.dir/bin/pong.cpp.o
+.PHONY : bin/pong.cpp.o
 
-bin/helloworld.i: bin/helloworld.cpp.i
+bin/pong.i: bin/pong.cpp.i
 
-.PHONY : bin/helloworld.i
+.PHONY : bin/pong.i
 
 # target to preprocess a source file
-bin/helloworld.cpp.i:
-	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/bin/helloworld.cpp.i
-.PHONY : bin/helloworld.cpp.i
+bin/pong.cpp.i:
+	$(MAKE) -f CMakeFiles/pong.dir/build.make CMakeFiles/pong.dir/bin/pong.cpp.i
+.PHONY : bin/pong.cpp.i
 
-bin/helloworld.s: bin/helloworld.cpp.s
+bin/pong.s: bin/pong.cpp.s
 
-.PHONY : bin/helloworld.s
+.PHONY : bin/pong.s
 
 # target to generate assembly for a file
-bin/helloworld.cpp.s:
-	$(MAKE) -f CMakeFiles/helloworld.dir/build.make CMakeFiles/helloworld.dir/bin/helloworld.cpp.s
-.PHONY : bin/helloworld.cpp.s
+bin/pong.cpp.s:
+	$(MAKE) -f CMakeFiles/pong.dir/build.make CMakeFiles/pong.dir/bin/pong.cpp.s
+.PHONY : bin/pong.cpp.s
+
+src/helloworld.o: src/helloworld.cpp.o
+
+.PHONY : src/helloworld.o
+
+# target to build an object file
+src/helloworld.cpp.o:
+	$(MAKE) -f CMakeFiles/Pong_core.dir/build.make CMakeFiles/Pong_core.dir/src/helloworld.cpp.o
+.PHONY : src/helloworld.cpp.o
+
+src/helloworld.i: src/helloworld.cpp.i
+
+.PHONY : src/helloworld.i
+
+# target to preprocess a source file
+src/helloworld.cpp.i:
+	$(MAKE) -f CMakeFiles/Pong_core.dir/build.make CMakeFiles/Pong_core.dir/src/helloworld.cpp.i
+.PHONY : src/helloworld.cpp.i
+
+src/helloworld.s: src/helloworld.cpp.s
+
+.PHONY : src/helloworld.s
+
+# target to generate assembly for a file
+src/helloworld.cpp.s:
+	$(MAKE) -f CMakeFiles/Pong_core.dir/build.make CMakeFiles/Pong_core.dir/src/helloworld.cpp.s
+.PHONY : src/helloworld.cpp.s
+
+src/paddle.o: src/paddle.cpp.o
+
+.PHONY : src/paddle.o
+
+# target to build an object file
+src/paddle.cpp.o:
+	$(MAKE) -f CMakeFiles/Pong_core.dir/build.make CMakeFiles/Pong_core.dir/src/paddle.cpp.o
+.PHONY : src/paddle.cpp.o
+
+src/paddle.i: src/paddle.cpp.i
+
+.PHONY : src/paddle.i
+
+# target to preprocess a source file
+src/paddle.cpp.i:
+	$(MAKE) -f CMakeFiles/Pong_core.dir/build.make CMakeFiles/Pong_core.dir/src/paddle.cpp.i
+.PHONY : src/paddle.cpp.i
+
+src/paddle.s: src/paddle.cpp.s
+
+.PHONY : src/paddle.s
+
+# target to generate assembly for a file
+src/paddle.cpp.s:
+	$(MAKE) -f CMakeFiles/Pong_core.dir/build.make CMakeFiles/Pong_core.dir/src/paddle.cpp.s
+.PHONY : src/paddle.cpp.s
+
+src/vector.o: src/vector.cpp.o
+
+.PHONY : src/vector.o
+
+# target to build an object file
+src/vector.cpp.o:
+	$(MAKE) -f CMakeFiles/Pong_core.dir/build.make CMakeFiles/Pong_core.dir/src/vector.cpp.o
+.PHONY : src/vector.cpp.o
+
+src/vector.i: src/vector.cpp.i
+
+.PHONY : src/vector.i
+
+# target to preprocess a source file
+src/vector.cpp.i:
+	$(MAKE) -f CMakeFiles/Pong_core.dir/build.make CMakeFiles/Pong_core.dir/src/vector.cpp.i
+.PHONY : src/vector.cpp.i
+
+src/vector.s: src/vector.cpp.s
+
+.PHONY : src/vector.s
+
+# target to generate assembly for a file
+src/vector.cpp.s:
+	$(MAKE) -f CMakeFiles/Pong_core.dir/build.make CMakeFiles/Pong_core.dir/src/vector.cpp.s
+.PHONY : src/vector.cpp.s
 
 # Help Target
 help:
@@ -158,10 +252,20 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... helloworld"
-	@echo "... bin/helloworld.o"
-	@echo "... bin/helloworld.i"
-	@echo "... bin/helloworld.s"
+	@echo "... pong"
+	@echo "... Pong_core"
+	@echo "... bin/pong.o"
+	@echo "... bin/pong.i"
+	@echo "... bin/pong.s"
+	@echo "... src/helloworld.o"
+	@echo "... src/helloworld.i"
+	@echo "... src/helloworld.s"
+	@echo "... src/paddle.o"
+	@echo "... src/paddle.i"
+	@echo "... src/paddle.s"
+	@echo "... src/vector.o"
+	@echo "... src/vector.i"
+	@echo "... src/vector.s"
 .PHONY : help
 
 
