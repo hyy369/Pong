@@ -1,5 +1,8 @@
 #include "../include/ball.h"
 #include "../include/paddle.h"
+#include <stdlib.h>
+#include <time.h>
+#include <cmath>
 
 void Ball::init (float x, float y, int r)
 {
@@ -7,7 +10,8 @@ void Ball::init (float x, float y, int r)
   this -> centerY = y;
   this -> radius = r;
   this -> speedX = 1;
-  this -> speedY = 1;
+  this -> speedY = float(rand()) / float(RAND_MAX) * 2 - 1;
+  normalizeSpeed();
 }
 
 void Ball::move()
@@ -24,23 +28,33 @@ void Ball::move()
   }
 }
 
+void Ball::normalizeSpeed()
+{
+  speedX = speedX / sqrt(speedX * speedX + speedY * speedY);
+  speedY = speedY / sqrt(speedX * speedX + speedY * speedY);
+}
+
 void Ball::collideWall()
 {
-  speedY = -speedY;
+  speedY = -speedY * (float(rand()) / float(RAND_MAX) * 0.2 + 1);
+  normalizeSpeed();
 }
 
 void Ball::checkCollidePaddle(Paddle paddle)
 {
   if ( (paddle.getSide() == 0) &&
        (getLeftX() <= paddle.getRightX()) &&
-       (getLowerY() >= paddle.getUpperY()) &&
-       (getUpperY() <= paddle.getLowerY())) {
+       (getLeftX() <= paddle.getLeftX()) &&
+       (centerY >= paddle.getUpperY()) &&
+       (centerY <= paddle.getLowerY())) {
     speedX = -speedX;
   } else if ( (paddle.getSide() == 1) &&
        (getRightX() >= paddle.getLeftX()) &&
-       (getLowerY() >= paddle.getUpperY()) &&
-       (getUpperY() <= paddle.getLowerY())) {
-    speedX = -speedX;
+       (getRightX() <= paddle.getRightX()) &&
+       (centerY >= paddle.getUpperY()) &&
+       (centerY <= paddle.getLowerY())) {
+    speedX = -speedX * (float(rand()) / float(RAND_MAX) * 0.2 + 1);
+    normalizeSpeed();
   }
 }
 

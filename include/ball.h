@@ -16,6 +16,7 @@ public:
   Ball (){}
   void init (float, float, int);
   void move();
+  void normalizeSpeed();
   void collideWall();
   void checkCollidePaddle(Paddle paddle);
   float getLeftX();

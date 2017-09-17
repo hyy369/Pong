@@ -5,6 +5,8 @@ CMakeFiles/Pong_core.dir/src/ball.cpp.o: ../include/ball.h
 CMakeFiles/Pong_core.dir/src/ball.cpp.o: ../include/paddle.h
 CMakeFiles/Pong_core.dir/src/ball.cpp.o: ../src/ball.cpp
 
+CMakeFiles/Pong_core.dir/src/helloworld.cpp.o: ../src/helloworld.cpp
+
 CMakeFiles/Pong_core.dir/src/paddle.cpp.o: ../include/paddle.h
 CMakeFiles/Pong_core.dir/src/paddle.cpp.o: ../src/paddle.cpp
 

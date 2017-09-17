@@ -12,7 +12,7 @@ sf::Font font;
 int main(int argc, char** argv)
 {
   //Font file is downloaded from https://github.com/todylu/monaco.ttf/blob/master/monaco.ttf
-  if (!font.loadFromFile("/Users/HYY/Documents/Workspace/Pong/monaco.ttf"))
+  if (!font.loadFromFile("../monaco.ttf"))
   {
     // error
     std::cout << "Error loading font file.";
@@ -25,6 +25,7 @@ int main(int argc, char** argv)
   int paddleLength = 100;
   int paddleWidth = 5;
   int ballRadius = 10;
+  srand (time(NULL));
 
   Paddle AIPaddle;
   Paddle playerPaddle;
@@ -61,8 +62,6 @@ int main(int argc, char** argv)
   messageText.setFillColor(sf::Color::White);
   messageText.setPosition(200,250);
 
-  bool restartGame = true;
-  bool restartRound = true;
 
   //start main game loop
   while (App.isOpen())
@@ -126,6 +125,12 @@ int main(int argc, char** argv)
       App.draw(AIPaddleShape);
       App.draw(playerPaddleShape);
 
+      scoreText.setString("Computer  " +
+                          std::to_string(AIScore) + " : " +
+                          std::to_string(playerScore) + "  Player");
+      App.draw(scoreText);
+
+
       //Display ball movement information for debugging
       debugText.setString("ballX: " +
                           std::to_string(ball.getLeftX()) + " ballY: " +
@@ -133,11 +138,6 @@ int main(int argc, char** argv)
                           std::to_string(ball.getSpeedX()) + " speedY: " +
                           std::to_string(ball.getSpeedY()));
       App.draw(debugText);
-
-      scoreText.setString("Computer  " +
-                          std::to_string(AIScore) + " : " +
-                          std::to_string(playerScore) + "  Player");
-      App.draw(scoreText);
 
       // display
       App.display();
