@@ -12,7 +12,7 @@ private:
 public:
   PaddleController (Paddle &);
   void init (Paddle &);
-  void makeDecision (Ball &);
+  void makeDecision (Ball &, int);
 };
 
 #endif

@@ -13,8 +13,8 @@ private:
 public:
   Paddle (){}
   void init (float, float, int, int, int);
-  void moveUp();
-  void moveDown();
+  void moveUp(int);
+  void moveDown(int);
   float getLeftX();
   float getRightX();
   float getUpperY();

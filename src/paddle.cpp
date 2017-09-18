@@ -9,14 +9,20 @@ void Paddle::init (float x, float y, int w, int l, int side)
 	this -> side = side;
 }
 
-void Paddle::moveUp()
+void Paddle::moveUp(int frameDelta)
 {
-	if (y > 0) {y--;}
+	if (y > 0)
+	{
+		y -= frameDelta;
+	}
 }
 
-void Paddle::moveDown()
+void Paddle::moveDown(int frameDelta)
 {
-	if ( y + length < 600) {y++;}
+	if ( y + length < 600)
+	{
+		y += frameDelta;
+	}
 }
 
 float Paddle::getLeftX()

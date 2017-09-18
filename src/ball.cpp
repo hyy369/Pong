@@ -15,7 +15,7 @@ void Ball::init (float x, float y, int r)
   normalizeSpeed();
 }
 
-bool Ball::move()
+bool Ball::move(int frameDelta)
 {
   if ( (getUpperY() <= 0.0 && speedY < 0.0) || (getLowerY() >= 600.0 && speedY > 0.0))
   {
@@ -25,8 +25,8 @@ bool Ball::move()
 
   if (getLeftX() >= 0.0 && getRightX() <= 800.0)
   {
-    centerX += speedX;
-    centerY += speedY;
+    centerX += speedX * frameDelta;
+    centerY += speedY * frameDelta;
   }
   return false;
 }

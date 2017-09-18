@@ -5,8 +5,5 @@
 #include <SFML/Audio.hpp>
 
 int main(int argc, char** argv);
-void playPaddleSound();
-void playWallSound();
-void initGame(Paddle &, Paddle &, Ball &);
 
 #endif
