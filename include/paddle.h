@@ -18,6 +18,7 @@ public:
   float getLeftX();
   float getRightX();
   float getUpperY();
+  float getCenterY();
   float getLowerY();
   int getWidth();
   int getLength();

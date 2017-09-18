@@ -15,14 +15,16 @@ private:
 public:
   Ball (){}
   void init (float, float, int);
-  void move();
+  bool move();
   void normalizeSpeed();
   void collideWall();
-  void checkCollidePaddle(Paddle paddle);
+  bool didCollidePaddle(Paddle paddle);
   float getLeftX();
   float getRightX();
   float getUpperY();
   float getLowerY();
+  float getCenterX();
+  float getCenterY();
   float getSpeedX();
   float getSpeedY();
   int getRadius();

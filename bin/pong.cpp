@@ -2,12 +2,17 @@
 #include <stdlib.h>
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/Shape.hpp>
+#include <SFML/Audio.hpp>
 #include "../include/paddle.h"
 #include "../include/ball.h"
 #include "../include/paddleController.h"
 #include "../include/pong.h"
 
 sf::Font font;
+// sf::Sound hitWallSound;
+// sf::Sound hitPaddleSound;
+// sf::SoundBuffer hitWallSoundBuffer;
+// sf::SoundBuffer hitPaddleSoundBuffer;
 
 int main(int argc, char** argv)
 {
@@ -15,8 +20,29 @@ int main(int argc, char** argv)
   if (!font.loadFromFile("../monaco.ttf"))
   {
     // error
-    std::cout << "Error loading font file.";
+    std::cout << "Error loading font file." << std::endl;
   }
+
+  sf::Sound hitWallSound;
+  sf::Sound hitPaddleSound;
+  sf::SoundBuffer hitWallSoundBuffer;
+  sf::SoundBuffer hitPaddleSoundBuffer;
+  if (!hitWallSoundBuffer.loadFromFile("../resources/hitWall.ogg"))
+  {
+    //error
+    std::cout << "Error loading sound file." << std::endl;
+  }
+
+  if (!hitPaddleSoundBuffer.loadFromFile("../resources/hitPaddle.ogg"))
+  {
+    // error
+    std::cout << "Error loading sound file." << std::endl;
+  }
+
+  hitWallSound.setBuffer(hitWallSoundBuffer);
+  hitPaddleSound.setBuffer(hitPaddleSoundBuffer);
+
+
   // create main window
   sf::RenderWindow App(sf::VideoMode(800,600,32), "The Pong Game");
 
@@ -75,7 +101,7 @@ int main(int argc, char** argv)
         App.close();
     }
 
-    // start dound loop
+    // start round loop
     while(playerScore < 11 && AIScore < 11)
     {
       // process events
@@ -96,9 +122,18 @@ int main(int argc, char** argv)
         playerPaddle.moveDown();
       }
 
-      ball.move();
-      ball.checkCollidePaddle(AIPaddle);
-      ball.checkCollidePaddle(playerPaddle);
+      if (ball.move())
+      {
+        hitWallSound.play();
+      }
+      if (ball.didCollidePaddle(AIPaddle))
+      {
+        hitPaddleSound.play();
+      }
+      if (ball.didCollidePaddle(playerPaddle))
+      {
+        hitPaddleSound.play();
+      }
       AIController.makeDecision(ball);
 
       if (ball.getLeftX() <= 0.0) {
@@ -167,6 +202,20 @@ int main(int argc, char** argv)
 
   // Done.
   return 0;
+}
+
+void playPaddleSound ()
+{
+  // sf::Sound hitPaddleSound;
+  // hitPaddleSound.setBuffer(hitPaddleSoundBuffer);
+  // hitPaddleSound.play();
+}
+
+void playWallSound ()
+{
+  // sf::Sound hitWallSound;
+  // hitWallSound.setBuffer(hitWallSoundBuffer);
+  // hitWallSound.play();
 }
 
 void initGame (Paddle &AIPaddle, Paddle &playerPaddle, Ball &ball)

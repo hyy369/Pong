@@ -16,7 +16,7 @@ void PaddleController::init(Paddle &paddle)
 
 void PaddleController::makeDecision (Ball &ball)
 {
-  if (ball.getLowerY() < paddle -> getUpperY())
+  if (ball.getCenterY() < paddle -> getUpperY())
   {
     paddle -> moveUp();
     // std::cout << "Move up paddle\n";

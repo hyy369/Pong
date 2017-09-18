@@ -34,6 +34,11 @@ float Paddle::getUpperY()
 	return y;
 }
 
+float Paddle::getCenterY()
+{
+	return y + (float) length / 2;
+}
+
 float Paddle::getLowerY()
 {
 	return y + length;

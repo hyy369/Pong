@@ -15,6 +15,8 @@ SFML/Graphics.hpp
 -
 SFML/Graphics/Shape.hpp
 -
+SFML/Audio.hpp
+-
 ../include/paddle.h
 /Users/HYY/Documents/Workspace/Pong/include/paddle.h
 ../include/ball.h
@@ -37,4 +39,8 @@ SFML/Graphics/Shape.hpp
 /Users/HYY/Documents/Workspace/Pong/include/ball.h
 
 /Users/HYY/Documents/Workspace/Pong/include/pong.h
+SFML/Graphics.hpp
+-
+SFML/Audio.hpp
+-
 
