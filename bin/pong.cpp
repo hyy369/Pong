@@ -16,7 +16,7 @@ int main(int argc, char** argv)
   //Init font
   sf::Font font;
   //Font file is downloaded from https://github.com/todylu/monaco.ttf/blob/master/monaco.ttf
-  if (!font.loadFromFile("../monaco.ttf"))
+  if (!font.loadFromFile("../resources/monaco.ttf"))
     std::cout << "Error loading font file." << std::endl;
 
   //Init sound system
