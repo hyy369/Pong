@@ -17,12 +17,10 @@ int main(int argc, char** argv)
   sf::Font font;
   //Font file is downloaded from https://github.com/todylu/monaco.ttf/blob/master/monaco.ttf
   if (!font.loadFromFile("../monaco.ttf"))
-  {
-    // error
     std::cout << "Error loading font file." << std::endl;
-  }
 
   //Init sound system
+  //Sound effects are from iMovie library
   sf::Sound hitWallSound;
   sf::Sound hitPaddleSound;
   sf::SoundBuffer hitWallSoundBuffer;
@@ -44,11 +42,12 @@ int main(int argc, char** argv)
   int paddleWidth = 5;
   int ballRadius = 10;
   int frameDelta = 0;
-  float speedFactor = 0.8;
-  enum GameStates {MENU, GAME, MESSAGE};
-  GameStates currState = MENU;
+  float speedFactor = 0.8;  //default difficulty is normal
+  enum GameStates {MENU, GAME, PAUSED, MESSAGE};  //game states to control game flow
+  GameStates currState = MENU; //default state is start up menu
+  GameStates savedState; //saved state when game paused
   sf::Event Event;
-  srand (time(NULL));
+  srand (time(NULL)); //seed rng
 
   //Init Actors
   Paddle AIPaddle;
@@ -90,7 +89,7 @@ int main(int argc, char** argv)
   menuText.setFont(font);
   menuText.setCharacterSize(24);
   menuText.setFillColor(sf::Color::White);
-  menuText.setPosition(200,250);
+  menuText.setPosition(150,100);
 
   //Init clock
   sf::Clock clock;
@@ -103,8 +102,21 @@ int main(int argc, char** argv)
     while(App.pollEvent(Event))
     {
       // Exit
-      if(Event.type == sf::Event::Closed)
-        App.close();
+      switch (Event.type)
+      {
+        case sf::Event::Closed:
+          App.close();
+          break;
+        case sf::Event::LostFocus:
+          savedState = currState;
+          currState = PAUSED;
+          break;
+        case sf::Event::GainedFocus:
+          currState = savedState;
+          break;
+        default:
+          break;
+      }
     }
 
     switch (currState)
@@ -113,7 +125,7 @@ int main(int argc, char** argv)
     case MENU :
       //display menu
       App.clear(sf::Color::Black);
-      menuText.setString("Press keyboard to choose difficulty:\n1 = Easy\n2 = Normal\n3 = Hard\n");
+      menuText.setString("Welcome come to the Pong game!\n\nPress keyboard to choose difficulty:\n1 = Easy\n2 = Normal\n3 = Hard\n\nYou control the paddle on the right.\nPress 'K' to move up and 'M' to move down.");
       App.draw(menuText);
       App.display();
 
@@ -199,8 +211,16 @@ int main(int argc, char** argv)
 
       // display
       App.display();
+      // if one player wins, display message
       if (playerScore == 11 || AIScore == 11)
         currState = MESSAGE;
+      break;
+
+    case PAUSED:
+      App.clear(sf::Color(64,64,64));
+      messageText.setString("Game is paused. Focus to resume.");
+      App.draw(messageText);
+      App.display();
       break;
 
     //Start message loop
@@ -208,7 +228,7 @@ int main(int argc, char** argv)
       //display winner message
       App.clear(sf::Color::Black);
       if (AIScore == 11)
-        messageText.setString("Computer wins! Restart Game?\n  Press Y/N");
+        messageText.setString("Computer wins! Restart Game?\nPress Y/N");
       else
         messageText.setString("You win! Restart Game?\n  Press Y/N");
       App.draw(messageText);
