@@ -46,7 +46,7 @@ int main(int argc, char** argv)
   int paddleLength = 100;
   int paddleWidth = 5;
   int ballRadius = 10;
-  int frameDelta = 0;
+  float frameDelta = 0.0;
   int currWidth = 800;
   int currHeight = 600;
   float speedFactor = 0.8;  //default difficulty is normal
@@ -148,7 +148,7 @@ int main(int argc, char** argv)
       //Choose diffculty
       if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num1))
       {
-        speedFactor = 0.8;
+        speedFactor = 0.4;
         currState = GAME;
         AIPaddle.init(50,currHeight,paddleWidth,paddleLength,0);
         playerPaddle.init(currWidth-50,currHeight,paddleWidth,paddleLength,1);
@@ -156,7 +156,7 @@ int main(int argc, char** argv)
         clock.restart();
       } else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
       {
-        speedFactor = 0.9;
+        speedFactor = 0.7;
         currState = GAME;
         AIPaddle.init(50,currHeight,paddleWidth,paddleLength,0);
         playerPaddle.init(currWidth-50,currHeight,paddleWidth,paddleLength,1);
@@ -175,7 +175,7 @@ int main(int argc, char** argv)
 
     //main game logic
     case GAME:
-      frameDelta = (int) clock.getElapsedTime().asMilliseconds();
+      frameDelta = (float) clock.getElapsedTime().asMilliseconds();
       frameDelta *= speedFactor;
       clock.restart();
 

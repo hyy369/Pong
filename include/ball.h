@@ -17,7 +17,7 @@ private:
 public:
   Ball (){}
   void init (float, float, int);
-  bool move(int);
+  bool move(float);
   void normalizeSpeed();
   void collideWall();
   void setWindowSize(float, float);

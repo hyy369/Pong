@@ -12,7 +12,7 @@ void Paddle::init (float x, float windowHeight, int w, int l, int side)
 }
 
 //move paddle up one time
-void Paddle::moveUp(int frameDelta)
+void Paddle::moveUp(float frameDelta)
 {
 	if (y > 0)
 	{
@@ -21,7 +21,7 @@ void Paddle::moveUp(int frameDelta)
 }
 
 //move paddle down one time
-void Paddle::moveDown(int frameDelta)
+void Paddle::moveDown(float frameDelta)
 {
 	if ( y + length < windowHeight)
 	{

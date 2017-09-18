@@ -20,7 +20,7 @@ void Ball::init (float windowWidth, float windowHeight, int r)
 }
 
 //move the ball one time, return if the ball has collided a wall
-bool Ball::move(int frameDelta)
+bool Ball::move(float frameDelta)
 {
   if ( (getUpperY() <= 0.0 && speedY < 0.0) || (getLowerY() >= windowHeight && speedY > 0.0))
   {

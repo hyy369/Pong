@@ -14,8 +14,8 @@ private:
 public:
   Paddle (){}
   void init (float, float, int, int, int);
-  void moveUp(int);
-  void moveDown(int);
+  void moveUp(float);
+  void moveDown(float);
   void setX(float);
   void setWindowHeight(float);
   float getLeftX();

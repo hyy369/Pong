@@ -14,7 +14,7 @@ void PaddleController::init(Paddle &paddle)
   this -> paddle = &paddle;
 }
 
-void PaddleController::makeDecision (Ball &ball, int frameDelta)
+void PaddleController::makeDecision (Ball &ball, float frameDelta)
 {
   if (ball.getCenterY() < paddle -> getUpperY())
   {
