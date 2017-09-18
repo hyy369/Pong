@@ -2,28 +2,32 @@
 #include "../include/paddle.h"
 #include "../include/pong.h"
 #include <stdlib.h>
-#include <time.h>
+#include <iostream>
 #include <cmath>
 
-void Ball::init (float x, float y, int r)
+// center the ball and randomly generate a starting movement heading the positive
+// direction on x, and between -1 and 1 on y direction.
+void Ball::init (float windowWidth, float windowHeight, int r)
 {
-  this -> centerX = x;
-  this -> centerY = y;
+  this -> centerX = windowWidth/2;
+  this -> centerY = windowHeight/2;
+  this -> windowWidth = windowWidth;
+  this -> windowHeight = windowHeight;
   this -> radius = r;
   this -> speedX = 1;
   this -> speedY = float(rand()) / float(RAND_MAX) * 2 - 1;
   normalizeSpeed();
 }
 
+//move the ball one time, return if the ball has collided a wall
 bool Ball::move(int frameDelta)
 {
-  if ( (getUpperY() <= 0.0 && speedY < 0.0) || (getLowerY() >= 600.0 && speedY > 0.0))
+  if ( (getUpperY() <= 0.0 && speedY < 0.0) || (getLowerY() >= windowHeight && speedY > 0.0))
   {
     collideWall();
     return true;
   }
-
-  if (getLeftX() >= 0.0 && getRightX() <= 800.0)
+  if (getLeftX() >= 0.0 && getRightX() <= windowWidth)
   {
     centerX += speedX * frameDelta;
     centerY += speedY * frameDelta;
@@ -31,19 +35,29 @@ bool Ball::move(int frameDelta)
   return false;
 }
 
+//normalize speed vector
 void Ball::normalizeSpeed()
 {
   speedX = speedX / sqrt(speedX * speedX + speedY * speedY);
   speedY = speedY / sqrt(speedX * speedX + speedY * speedY);
 }
 
+//reflect speed vector if collides a wall, multiply by random number in [0.9, 1.1]
 void Ball::collideWall()
 {
-  // playWallSound();
   speedY = -speedY * (float(rand()) / float(RAND_MAX) * 0.2 + 1);
   normalizeSpeed();
 }
 
+//update window size
+void Ball::setWindowSize(float w, float h)
+{
+  windowWidth = w;
+  windowHeight = h;
+}
+
+//reflect speed vector if collides a paddle, multiply by random number in [0.9, 1.1]
+//returns if ball did collede a paddle
 bool Ball::didCollidePaddle(Paddle paddle)
 {
   if ( (paddle.getSide() == 0) &&

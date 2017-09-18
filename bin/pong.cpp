@@ -23,14 +23,19 @@ int main(int argc, char** argv)
   //Sound effects are from iMovie library
   sf::Sound hitWallSound;
   sf::Sound hitPaddleSound;
+  sf::Sound scoreUpSound;
   sf::SoundBuffer hitWallSoundBuffer;
   sf::SoundBuffer hitPaddleSoundBuffer;
+  sf::SoundBuffer scoreUpSoundBuffer;
   if (!hitWallSoundBuffer.loadFromFile("../resources/hitWall.ogg"))
     std::cout << "Error loading sound file." << std::endl;
   if (!hitPaddleSoundBuffer.loadFromFile("../resources/hitPaddle.ogg"))
     std::cout << "Error loading sound file." << std::endl;
+  if (!scoreUpSoundBuffer.loadFromFile("../resources/scoreUp.ogg"))
+    std::cout << "Error loading sound file." << std::endl;
   hitWallSound.setBuffer(hitWallSoundBuffer);
   hitPaddleSound.setBuffer(hitPaddleSoundBuffer);
+  scoreUpSound.setBuffer(scoreUpSoundBuffer);
 
   // create main window
   sf::RenderWindow App(sf::VideoMode(800,600,32), "The Pong Game");
@@ -42,6 +47,8 @@ int main(int argc, char** argv)
   int paddleWidth = 5;
   int ballRadius = 10;
   int frameDelta = 0;
+  int currWidth = 800;
+  int currHeight = 600;
   float speedFactor = 0.8;  //default difficulty is normal
   enum GameStates {MENU, GAME, PAUSED, MESSAGE};  //game states to control game flow
   GameStates currState = MENU; //default state is start up menu
@@ -53,9 +60,6 @@ int main(int argc, char** argv)
   Paddle AIPaddle;
   Paddle playerPaddle;
   Ball ball;
-  AIPaddle.init(50,250,paddleWidth,paddleLength,0);
-  playerPaddle.init(750,250,paddleWidth,paddleLength,1);
-  ball.init(400,300,ballRadius);
   PaddleController AIController(AIPaddle);
 
   //Init shapes
@@ -67,17 +71,17 @@ int main(int argc, char** argv)
   playerPaddleShape.setFillColor(sf::Color(sf::Color::White));
 
   //Init Texts
-  sf::Text debugText;
-  debugText.setFont(font);
-  debugText.setCharacterSize(12);
-  debugText.setFillColor(sf::Color::White);
-  debugText.setPosition(0,0);
+  // sf::Text debugText;
+  // debugText.setFont(font);
+  // debugText.setCharacterSize(12);
+  // debugText.setFillColor(sf::Color::White);
+  // debugText.setPosition(0,0);
 
   sf::Text scoreText;
   scoreText.setFont(font);
   scoreText.setCharacterSize(24);
   scoreText.setFillColor(sf::Color::White);
-  scoreText.setPosition(100,32);
+  scoreText.setPosition(240,32);
 
   sf::Text messageText;
   messageText.setFont(font);
@@ -115,6 +119,17 @@ int main(int argc, char** argv)
           currState = savedState;
           clock.restart();
           break;
+        case sf::Event::Resized:
+          savedState = currState;
+          currState = PAUSED;
+          App.setView(sf::View(sf::FloatRect(0, 0, Event.size.width, Event.size.height)));
+          currWidth = Event.size.width;
+          currHeight = Event.size.height;
+          playerPaddle.setWindowHeight(currHeight);
+          AIPaddle.setWindowHeight(currHeight);
+          ball.setWindowSize(currWidth,currHeight);
+          playerPaddle.setX( (float)( currWidth - 50 ) );
+          break;
         default:
           break;
       }
@@ -122,10 +137,10 @@ int main(int argc, char** argv)
 
     switch (currState)
     {
-    //Start menu loop
+    //Display start up menu
     case MENU :
       //display menu
-      App.clear(sf::Color::Black);
+      App.clear(sf::Color::Blue);
       menuText.setString("Welcome come to the Pong game!\n\nPress keyboard to choose difficulty:\n1 = Easy\n2 = Normal\n3 = Hard\n\nYou control the paddle on the right.\nPress 'K' to move up and 'M' to move down.");
       App.draw(menuText);
       App.display();
@@ -135,22 +150,31 @@ int main(int argc, char** argv)
       {
         speedFactor = 0.8;
         currState = GAME;
+        AIPaddle.init(50,currHeight,paddleWidth,paddleLength,0);
+        playerPaddle.init(currWidth-50,currHeight,paddleWidth,paddleLength,1);
+        ball.init(currWidth,currHeight,ballRadius);
         clock.restart();
       } else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
       {
         speedFactor = 0.9;
         currState = GAME;
+        AIPaddle.init(50,currHeight,paddleWidth,paddleLength,0);
+        playerPaddle.init(currWidth-50,currHeight,paddleWidth,paddleLength,1);
+        ball.init(currWidth,currHeight,ballRadius);
         clock.restart();
       } else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num3))
       {
         speedFactor = 1.0;
         currState = GAME;
+        AIPaddle.init(50,currHeight,paddleWidth,paddleLength,0);
+        playerPaddle.init(currWidth-50,currHeight,paddleWidth,paddleLength,1);
+        ball.init(currWidth,currHeight,ballRadius);
         clock.restart();
       }
       break;
 
+    //main game logic
     case GAME:
-      // start round
       frameDelta = (int) clock.getElapsedTime().asMilliseconds();
       frameDelta *= speedFactor;
       clock.restart();
@@ -175,16 +199,18 @@ int main(int argc, char** argv)
       //Check if ball has hit opponent's edge
       if (ball.getLeftX() <= 0.0) {
         playerScore++;
+        scoreUpSound.play();
         // std::cout << "Player scores." << std::endl;
-        AIPaddle.init(50,250,paddleWidth,paddleLength,0);
-        playerPaddle.init(750,250,paddleWidth,paddleLength,1);
-        ball.init(400,300,ballRadius);
-      } else if (ball.getRightX() >= 800.0) {
+        AIPaddle.init(50,currHeight,paddleWidth,paddleLength,0);
+        playerPaddle.init(currWidth-50,currHeight,paddleWidth,paddleLength,1);
+        ball.init(currWidth,currHeight,ballRadius);
+      } else if (ball.getRightX() >= currWidth) {
         AIScore++;
+        scoreUpSound.play();
         // std::cout << "AI scores." << std::endl;
-        AIPaddle.init(50,250,paddleWidth,paddleLength,0);
-        playerPaddle.init(750,250,paddleWidth,paddleLength,1);
-        ball.init(400,300,ballRadius);
+        AIPaddle.init(50,currHeight,paddleWidth,paddleLength,0);
+        playerPaddle.init(currWidth-50,currHeight,paddleWidth,paddleLength,1);
+        ball.init(currWidth,currHeight,ballRadius);
       }
 
       //Update view
@@ -203,12 +229,12 @@ int main(int argc, char** argv)
 
 
       //Display ball movement information for debugging
-      debugText.setString("ballX: " +
-                          std::to_string(ball.getLeftX()) + " ballY: " +
-                          std::to_string(ball.getUpperY()) + " speedX: " +
-                          std::to_string(ball.getSpeedX()) + " speedY: " +
-                          std::to_string(ball.getSpeedY()));
-      App.draw(debugText);
+      // debugText.setString("ballX: " +
+      //                     std::to_string(ball.getLeftX()) + " ballY: " +
+      //                     std::to_string(ball.getUpperY()) + " speedX: " +
+      //                     std::to_string(ball.getSpeedX()) + " speedY: " +
+      //                     std::to_string(ball.getSpeedY()));
+      // App.draw(debugText);
 
       // display
       App.display();
@@ -217,21 +243,33 @@ int main(int argc, char** argv)
         currState = MESSAGE;
       break;
 
+    //Display pause screen
     case PAUSED:
       App.clear(sf::Color(64,64,64));
-      messageText.setString("Game is paused. Focus to resume.");
+      messageText.setString("Game is paused.\nFocus or press Enter (Return) to resume.");
       App.draw(messageText);
       App.display();
+      if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+      {
+        currState = savedState;
+        clock.restart();
+      }
       break;
 
     //Start message loop
     case MESSAGE:
       //display winner message
-      App.clear(sf::Color::Black);
       if (AIScore == 11)
+      {
+        App.clear(sf::Color::White);
+        messageText.setFillColor(sf::Color::Black);
         messageText.setString("Computer wins! Restart Game?\nPress Y/N");
+      }
       else
+      {
+        App.clear(sf::Color::Red);
         messageText.setString("You win! Restart Game?\n  Press Y/N");
+      }
       App.draw(messageText);
       App.display();
 

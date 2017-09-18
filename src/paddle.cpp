@@ -1,14 +1,17 @@
 #include "../include/paddle.h"
 
-void Paddle::init (float x, float y, int w, int l, int side)
+//initialize a paddle, center in y direction
+void Paddle::init (float x, float windowHeight, int w, int l, int side)
 {
 	this -> x = x;
-	this -> y = y;
+	this -> y = windowHeight/2 - l/2;
+	this -> windowHeight = windowHeight;
 	this -> width = w;
 	this -> length = l;
 	this -> side = side;
 }
 
+//move paddle up one time
 void Paddle::moveUp(int frameDelta)
 {
 	if (y > 0)
@@ -17,12 +20,25 @@ void Paddle::moveUp(int frameDelta)
 	}
 }
 
+//move paddle down one time
 void Paddle::moveDown(int frameDelta)
 {
-	if ( y + length < 600)
+	if ( y + length < windowHeight)
 	{
 		y += frameDelta;
 	}
+}
+
+//set x when window is resized
+void Paddle::setX(float newX)
+{
+	x = newX;
+}
+
+//update window height
+void Paddle::setWindowHeight(float newHeight)
+{
+	windowHeight = newHeight;
 }
 
 float Paddle::getLeftX()

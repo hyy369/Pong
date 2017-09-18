@@ -8,6 +8,8 @@ class Ball
 private:
   float centerX;
   float centerY;
+  float windowWidth;
+  float windowHeight;
   int radius;
   float speedX;
   float speedY;
@@ -18,6 +20,7 @@ public:
   bool move(int);
   void normalizeSpeed();
   void collideWall();
+  void setWindowSize(float, float);
   bool didCollidePaddle(Paddle paddle);
   float getLeftX();
   float getRightX();
