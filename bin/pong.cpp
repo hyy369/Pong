@@ -113,6 +113,7 @@ int main(int argc, char** argv)
           break;
         case sf::Event::GainedFocus:
           currState = savedState;
+          clock.restart();
           break;
         default:
           break;
