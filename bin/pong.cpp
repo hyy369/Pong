@@ -100,7 +100,6 @@ int main(int argc, char** argv)
   while (App.isOpen())
   {
     // process events
-    // sf::Event Event;
     while(App.pollEvent(Event))
     {
       // Exit
@@ -108,16 +107,10 @@ int main(int argc, char** argv)
         App.close();
     }
 
+    switch (currState)
+    {
     //Start menu loop
-    while (currState == MENU && App.isOpen()) {
-      // process events
-      while(App.pollEvent(Event))
-      {
-        // Exit
-        if(Event.type == sf::Event::Closed)
-          App.close();
-      }
-
+    case MENU :
       //display menu
       App.clear(sf::Color::Black);
       menuText.setString("Press keyboard to choose difficulty:\n1 = Easy\n2 = Normal\n3 = Hard\n");
@@ -129,33 +122,25 @@ int main(int argc, char** argv)
       {
         speedFactor = 0.8;
         currState = GAME;
+        clock.restart();
       } else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num2))
       {
         speedFactor = 0.9;
         currState = GAME;
+        clock.restart();
       } else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Num3))
       {
         speedFactor = 1.0;
         currState = GAME;
+        clock.restart();
       }
-    }
+      break;
 
-    // start round loop
-    clock.restart();
-    while (playerScore < 11 && AIScore < 11 && App.isOpen())
-    {
-
+    case GAME:
+      // start round
       frameDelta = (int) clock.getElapsedTime().asMilliseconds();
       frameDelta *= speedFactor;
       clock.restart();
-      // process events
-      // sf::Event Event;
-      while(App.pollEvent(Event))
-      {
-        // Exit
-        if(Event.type == sf::Event::Closed)
-          App.close();
-      }
 
       //Move paddle using keyboard control
       if (sf::Keyboard::isKeyPressed(sf::Keyboard::K))
@@ -214,20 +199,12 @@ int main(int argc, char** argv)
 
       // display
       App.display();
-    }
+      if (playerScore == 11 || AIScore == 11)
+        currState = MESSAGE;
+      break;
 
     //Start message loop
-    currState = MESSAGE;
-    while (currState == MESSAGE && App.isOpen())
-    {
-      // process events
-      while(App.pollEvent(Event))
-      {
-        // Exit
-        if(Event.type == sf::Event::Closed)
-          App.close();
-      }
-
+    case MESSAGE:
       //display winner message
       App.clear(sf::Color::Black);
       if (AIScore == 11)
@@ -247,9 +224,9 @@ int main(int argc, char** argv)
       {
         App.close();
       }
-    }
-
-  }
+      break;
+    } //end of switch
+  } //end of while
 
   // Done.
   return 0;
