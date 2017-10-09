@@ -1,4 +1,0 @@
-/Users/HYY/Documents/Workspace/Pong/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/HYY/Documents/Workspace/Pong/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/HYY/Documents/Workspace/Pong/cmake-build-debug/CMakeFiles/pong.dir
-/Users/HYY/Documents/Workspace/Pong/cmake-build-debug/CMakeFiles/Pong_core.dir
