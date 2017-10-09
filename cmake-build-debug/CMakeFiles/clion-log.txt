@@ -1,0 +1,7 @@
+/Applications/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/HYY/Documents/Workspace/Pong
+-- Found SFML .. in /Library/Frameworks/SFML.framework
+-- Using user specified build type: DEBUG
+-- Adding executable: pong
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/HYY/Documents/Workspace/Pong/cmake-build-debug
