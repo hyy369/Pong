@@ -1,4 +1,4 @@
-![alt text](https://github.com/hyy369.com/Pong/blob/master/screenshot.png)
+![alt text](https://github.com/hyy369/Pong/blob/master/screenshot.png)
 # Pong
 
 Reimplementation of the classic arcade game ‘pong’ using SFML and an OO approach.
